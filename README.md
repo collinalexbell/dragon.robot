@@ -3,7 +3,7 @@
 An Open Source OS  on Android for Spirit Animals. 
 Inspired by *The Golden Compass*, *Eragon*, *Avitar (Navi)*, and XKCD.
 
-![alt text](https://raw.githubusercontent.com/SlightlyCyborg/soul/master/require_soul.png)
+![alt text](https://raw.githubusercontent.com/SlightlyCyborg/life.daemon/master/require_soul.png)
 
 ## Contributing
 
