@@ -1,4 +1,4 @@
-# Soul
+# Daemon Soul
 
 An Open Source OS  on Android for Spirit Animals. 
 Inspired by *The Golden Compass*, *Eragon*, *Avitar (Navi)*, and XKCD.
