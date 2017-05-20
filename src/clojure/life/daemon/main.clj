@@ -4,8 +4,10 @@
               [neko.notify :refer [toast]]
               [neko.resource :as res]
               [neko.find-view :refer [find-view]]
-              [neko.threading :refer [on-ui]])
-    (:import android.widget.EditText))
+              [neko.threading :refer [on-ui]]
+              [life.daemon.brocas-area :as brocas-area])
+    (:import android.widget.EditText
+             [android.speech.tts TextToSpeech$OnInitListener]))
 
 ;; We execute this function to import all subclasses of R class. This gives us
 ;; access to all application resources.
@@ -22,6 +24,12 @@
              (res/get-string R$string/your_input_fmt input))
            :long)))
 
+(def tts-ready
+  (reify TextToSpeech$OnInitListener
+    (onInit [this status]
+      (if (= status 0)
+        (toast "TTS ready")))))
+
 ;; This is how an Activity is defined. We create one and specify its onCreate
 ;; method. Inside we create a user interface that consists of an edit and a
 ;; button. We also give set callback to the button.
@@ -31,6 +39,7 @@
   (onCreate [this bundle]
     (.superOnCreate this bundle)
     (neko.debug/keep-screen-on this)
+    (brocas-area/init this tts-ready)
     (on-ui
       (set-content-view! (*a)
         [:linear-layout {:orientation :vertical
