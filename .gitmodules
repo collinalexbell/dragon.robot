@@ -1,0 +1,3 @@
+[submodule "src/arduino/choreo"]
+	path = src/arduino/choreo
+	url = https://github.com/SlightlyCyborg/choreo.git
