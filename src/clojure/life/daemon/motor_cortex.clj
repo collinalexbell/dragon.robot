@@ -6,6 +6,7 @@
 
 (def bt nil)
 (def actiity nil)
+(def socket nil)
 
 (defn -throw-if-no-bt []
   (if (= bt nil)
@@ -74,7 +75,13 @@
     (= (Class/forName "[B")
        (.getClass x))))
 
-(defn move
+(defn move [commands]
+  (if (nil? socket)
+    (throw
+     (Exception. "Can not move without a connection to the arduino"))
+    (talk-with-mr-robot socket (clj-motor-cmds->choreo-bytes commands))))
+
+(defn clj-motor-cmds->choreo-bytes
   [commands]
   (->> [
         ;;Number of motors
