@@ -1,4 +1,5 @@
 (ns life.daemon.motor-cortex
+  (:require [life.daemon.list-of-motor-commands :as commands])
   (:import [android.bluetooth BluetoothAdapter]
            [android.content Intent]
            [java.nio ByteBuffer]))
@@ -59,10 +60,6 @@
       (if (> bytes-available 0)
         (do (print (.read istream))
             (recur (.available istream)))))))
-
-(def ex-command
-  {0 [{:id 0 :amount 20 :duration 1000} {:id 1 :amount -20 :duration 1000}]
-   1 [{:id 2 :amount 10 :duration 1000} {:id 3 :amount -10 :duration 1000}]})
 
 
 (defn unsigned-to-signed
