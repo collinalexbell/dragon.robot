@@ -37,10 +37,13 @@
 
 
 (defn create-socket-with-mr-robot [mr-robot]
-   (.createRfcommSocketToServiceRecord
-    (:device mr-robot)
-    (.getUuid
-     (first (.getUuids (:device mr-robot))))))
+  (let [s
+        (.createRfcommSocketToServiceRecord
+         (:device mr-robot)
+         (.getUuid
+          (first (.getUuids (:device mr-robot)))))]
+    (def socket s)
+    s))
 
 (defn connect-with-mr-robot [socket]
   (.connect socket))
@@ -104,8 +107,3 @@
 
        (mapcat seq)
        (byte-array)))
-
-
-
-
-
