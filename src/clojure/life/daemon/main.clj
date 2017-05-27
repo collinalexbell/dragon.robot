@@ -8,7 +8,8 @@
               [life.daemon.brocas-area :as brocas-area]
               [life.daemon.motor-cortex :as motor-cortex])
     (:import android.widget.EditText
-             [android.speech.tts TextToSpeech$OnInitListener]))
+             [android.speech.tts TextToSpeech$OnInitListener]
+             [android.view View]))
 
 ;; We execute this function to import all subclasses of R class. This gives us
 ;; access to all application resources.
@@ -37,8 +38,26 @@
 (defactivity life.daemon.MainActivity
   :key :main
 
-  (onCreate [this bundle]
+  (onCreate
+   [this bundle]
+   (-> (*a)
+       (.getWindow )
+       (.getDecorView)
+       (.setSystemUiVisibility (bit-or
+                                View/SYSTEM_UI_FLAG_LAYOUT_STABLE
+                                View/SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                                View/SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                                View/SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                                View/SYSTEM_UI_FLAG_FULLSCREEN
+                                View/SYSTEM_UI_FLAG_IMMERSIVE)))
     (.superOnCreate this bundle)
+    (motor-cortex/init this)
+    (let [mr-robot-bt (motor-cortex/find-mr-robot)]
+     (if (not (nil? mr-robot-bt))
+       (do
+        (def socket
+          (motor-cortex/create-socket-with-mr-robot mr-robot-bt))
+        (.connect socket))))
     (neko.debug/keep-screen-on this)
     (brocas-area/init this tts-ready)
     (on-ui
@@ -46,9 +65,8 @@
         [:linear-layout {:orientation :vertical
                          :layout-width :fill
                          :layout-height :wrap}
-         [:edit-text {:id ::user-input
-                      :hint "Type text here"
-                      :layout-width :fill}]
-         [:button {:text R$string/touch_me ;; We use resource here, but could
-                                           ;; have used a plain string too.
-                   :on-click (fn [_] (notify-from-edit (*a)))}]]))))
+         [:image-view
+          {:image R$drawable/fidget_spinner_cat_best
+           :layout-width 1080
+           :layout-height 1920
+           }]]))))
