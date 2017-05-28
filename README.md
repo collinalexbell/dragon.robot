@@ -2,7 +2,7 @@
 
 Inspired by *Pokemon*, *The Golden Compass*, *Eragon*, *Avitar (Navi)*, and XKCD.
 
-<img src="https://raw.githubusercontent.com/SlightlyCyborg/life.daemon/master/robot.jpg" alt="Daemon Robot" style="width: 240px;"/>
+<img src="https://raw.githubusercontent.com/SlightlyCyborg/life.daemon/master/robot.jpg" alt="Daemon Robot" width="240px"/>
 
 ## Contributing
 
