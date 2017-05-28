@@ -6,7 +6,8 @@
               [neko.find-view :refer [find-view]]
               [neko.threading :refer [on-ui]]
               [life.daemon.brocas-area :as brocas-area]
-              [life.daemon.motor-cortex :as motor-cortex])
+              [life.daemon.motor-cortex :as motor-cortex]
+              [life.daemon.list-of-motor-commands :as commands])
     (:import android.widget.EditText
              [android.speech.tts TextToSpeech$OnInitListener]
              [android.view View]))
