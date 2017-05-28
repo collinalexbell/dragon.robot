@@ -11,3 +11,7 @@
 (defn look-down [amount time-in-ms]
   {1 [{:id 2 :amount (* -1 amount) :duration time-in-ms}]})
 
+
+(defn look-up [amount time-in-ms]
+  {1 [{:id 2 :amount  amount :duration time-in-ms}]})
+
