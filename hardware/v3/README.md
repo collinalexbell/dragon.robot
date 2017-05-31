@@ -6,5 +6,5 @@ This is the hardware for v3 of the daemon robot. It is a wingless dragon that us
 
 ### Non 3D printed components
 
-- [Tower Pro SG90 Servo](http://a360.co/2rih2fV) <img src="https://pbs.twimg.com/media/DBIBAU5XkAA9t0I.jpg:small" width="100"/>
+- [Tower Pro SG90 Servo](http://a360.co/2rih2fV) <img src="https://pbs.twimg.com/media/DBIBAU5XkAA9t0I.jpg:small" width="200"/>
 
