@@ -16,6 +16,6 @@ Inspired by *Pokemon*, *The Golden Compass*, *Eragon*, *Avitar (Navi)*, and XKCD
 ## License
 
 
-Copyright © 2017, SlightlyCyborg
+Copyright © 2017, Kuberlog
 
 Distributed under the MIT License.
